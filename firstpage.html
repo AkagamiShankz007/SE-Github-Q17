@@ -57,7 +57,7 @@
         label {
             font-weight: 600;
             color: #374151;
-        /* ERROR 1: Missing closing brace for 'label' selector */
+        } /* FIXED: Added missing closing brace */
 
         input {
             width: 100%;
@@ -127,12 +127,12 @@
             </div>
 
             <div class="field">
-                <!-- ERROR 2: Unclosed HTML label tag -->
-                <label for="gmail">Gmail</label
+                <!-- FIXED: Added closing bracket to label tag -->
+                <label for="gmail">Gmail</label>
                 <input type="email" id="gmail" name="gmail" placeholder="Enter your email" required>
             </div>
 
-            <!-- New File Upload Field -->
+            <!-- File Upload Field -->
             <div class="field">
                 <label for="document">Upload Document</label>
                 <input type="file" id="document" name="document" required>
@@ -148,8 +148,8 @@
         document.getElementById('detailsForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // ERROR 3: Target ID in document.getElementById is incorrect ('successMsg' instead of 'successMessage')
-            const messageDiv = document.getElementById('successMsg');
+            // FIXED: Corrected target element ID to 'successMessage'
+            const messageDiv = document.getElementById('successMessage');
             
             const fileName = document.getElementById('document').files[0].name;
             messageDiv.textContent = `Form submitted successfully with file: ${fileName}`;
