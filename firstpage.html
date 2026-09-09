@@ -69,6 +69,13 @@
             transition: border-color 0.2s ease, box-shadow 0.2s ease;
         }
 
+        /* Styling for file input */
+        input[type="file"] {
+            padding: 8px;
+            background-color: #f8fafc;
+            cursor: pointer;
+        }
+
         input:focus {
             border-color: #3b82f6;
             box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.12);
@@ -145,5 +152,18 @@
 
         <div id="successMessage" class="message" aria-live="polite"></div>
     </div>
+
+    <script>
+        document.getElementById('detailsForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // FIXED: Corrected target element ID to 'successMessage'
+            const messageDiv = document.getElementById('successMessage');
+            
+            const fileName = document.getElementById('document').files[0].name;
+            messageDiv.textContent = `Form submitted successfully with file: ${fileName}`;
+            messageDiv.classList.add('visible');
+        });
+    </script>
 </body>
 </html>
