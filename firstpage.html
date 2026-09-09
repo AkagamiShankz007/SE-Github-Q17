@@ -57,7 +57,7 @@
         label {
             font-weight: 600;
             color: #374151;
-        
+        } /* FIXED: Added missing closing brace */
 
         input {
             width: 100%;
@@ -67,6 +67,13 @@
             font-size: 1rem;
             outline: none;
             transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        /* Styling for file input */
+        input[type="file"] {
+            padding: 8px;
+            background-color: #f8fafc;
+            cursor: pointer;
         }
 
         input:focus {
@@ -120,8 +127,15 @@
             </div>
 
             <div class="field">
-                <label for="gmail">Gmail</label 
+                <!-- FIXED: Added closing bracket to label tag -->
+                <label for="gmail">Gmail</label>
                 <input type="email" id="gmail" name="gmail" placeholder="Enter your email" required>
+            </div>
+
+            <!-- File Upload Field -->
+            <div class="field">
+                <label for="document">Upload Document</label>
+                <input type="file" id="document" name="document" required>
             </div>
 
             <button type="submit">Submit</button>
@@ -129,5 +143,18 @@
 
         <div id="successMessage" class="message" aria-live="polite"></div>
     </div>
+
+    <script>
+        document.getElementById('detailsForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // FIXED: Corrected target element ID to 'successMessage'
+            const messageDiv = document.getElementById('successMessage');
+            
+            const fileName = document.getElementById('document').files[0].name;
+            messageDiv.textContent = `Form submitted successfully with file: ${fileName}`;
+            messageDiv.classList.add('visible');
+        });
+    </script>
 </body>
 </html>
